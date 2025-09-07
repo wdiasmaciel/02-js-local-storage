@@ -15,7 +15,7 @@
         if (typeof (Storage) !== "undefined") {
             var nome = localStorage.getItem("nome");
 
-            while (nome == null) {
+            while ((nome == null) || (nome == "Informe seu nome...")){
                 //Armazena um item localmente.
                 nome = prompt("Olá!", "Informe seu nome...");
                 localStorage.setItem("nome", nome);
