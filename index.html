@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <button id="btn" onclick="remover ()">
+        Remover
+    </button>
+    
+    <br /><br />
+    
+    <div id="result"></div>
+    
+    <script>
+        //Verifica se o recurso de armazenamento local é suportado no navegador.
+        if (typeof (Storage) !== "undefined") {
+            var nome = localStorage.getItem("nome");
+
+            while (nome == null) {
+                //Armazena um item localmente.
+                nome = prompt("Olá!", "Informe seu nome...");
+                localStorage.setItem("nome", nome);
+            }
+
+            //Item armazenado localmente.
+            document.getElementById("result").innerHTML = "Nome armazenado: " + nome;
+                
+        } else {
+            document.getElementById("result").innerHTML = "Seu navegador não suporta Web Storage.";
+        }
+
+        //Remove um item armazenado localmente.
+        function remover() {
+            //Verifica se o recurso de armazenamento local é suportado.
+            if (typeof (Storage) !== "undefined") {
+                //Remove o item armazenado localmente.
+                localStorage.removeItem("nome");
+                document.getElementById("result").innerHTML = "nome foi removido com sucesso!";
+            }
+        }
+    </script>
+</body>
+
+</html>
